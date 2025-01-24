@@ -7,53 +7,71 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 // Siga os comentários para implementar cada parte do desafio.
 //Teste larissa
+typedef struct {
+    int codigo;
+    char nome[20];
+    float populacao;
+    float area;
+    double PIB;
+    int turismo;
+} Cidade;
 
 int main() {
+    // Criei um array de cidades
+    Cidade cidades[3];
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
     //Primeira cidade.
-    int codigo = 1;
-    char nome[20] = "Vitoria";
-    float populacao = 250.000;
-    float area = 999.999;
-    double PIB = 2342.54;
-    int turismo = 500;
+    cidades[0].codigo = 1;
+    strcpy(cidades[0].nome, "Vitoria");
+    cidades[0].populacao = 250000.0;
+    cidades[0].area = 999.999;
+    cidades[0].PIB = 2342.54;
+    cidades[0].turismo = 500;
     //Segunda cidade.
-    int codigo = 2;
-    char nome[20] = "Ragathan";
-    float populacao = 400.000;
-    float area = 600.256;
-    double PIB = 1455.12;
-    int turismo = 30;
+    cidades[1].codigo = 2;
+    strcpy(cidades[1].nome, "Ragathan");
+    cidades[1].populacao = 400000.0;
+    cidades[1].area = 600.256;
+    cidades[1].PIB = 1455.12;
+    cidades[1].turismo = 30;
     //Terceira cidade.
-    int codigo = 3;
-    char nome[20] = "Varaton";
-    float populacao = 900.000;
-    float area = 800.000;
-    double PIB = 9800.00;
-    int turismo = 600;
+    cidades[2].codigo = 3;
+    strcpy(cidades[2].nome, "Varaton");
+    cidades[2].populacao = 900000.0;
+    cidades[2].area = 800.000;
+    cidades[2].PIB = 9800.00;
+    cidades[2].turismo = 600;
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    printf("codigo: %d codigo \n", codigo);
-    scanf("%d", &codigo);
-    printf("nome: %s\n", nome);
-    scanf("%s", &nome);
-    printf("populacao %.2f pessoas \n", populacao);
-    scanf("%.2f", &populacao);
-    printf("area: %.2f area \n", area);
-    scanf("%.2f", &area);
-    printf("PIB: %.2f PIB \n", PIB);
-    scanf("%.2f", &PIB);
-    printf("turismo: %d turistas \n", turismo);
-    scanf("%d", &turismo);
+    printf("Digite o código da cidade: ");
+    scanf("%d", &cidades[0].codigo);
+    
+    printf("Digite o nome da cidade: ");
+    scanf("%s", cidades[0].nome);
+    
+    printf("Digite a população: ");
+    scanf("%f", &cidades[0].populacao);
+    
+    printf("Digite a área: ");
+    scanf("%f", &cidades[0].area);
+    
+    printf("Digite o PIB: ");
+    scanf("%lf", &cidades[0].PIB);
+    
+    printf("Digite o número de turistas: ");
+    scanf("%d", &cidades[0].turismo);
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-    printf("Seu codigo é: %d\n", codigo);
-    printf("O nome da cidade é: %s\n", nome);
-    printf("A quantidade de Habitantes é: %.2f\n", populacao);
-    printf("O tamanho da cidade é: %.2f\n", area);
-    printf("O PIB da cidade é: %.2f\n", PIB);
-    printf("A quantidade de turistas é de: %d\n", turismo);
+    printf("\nInformações da Cidade:\n");
+    printf("Código: %d\n", cidades[0].codigo);
+    printf("Nome: %s\n", cidades[0].nome);
+    printf("População: %.2f\n", cidades[0].populacao);
+    printf("Área: %.2f\n", cidades[0].area);
+    printf("PIB: %.2f\n", cidades[0].PIB);
+    printf("Turismo: %d\n", cidades[0].turismo);
+
+    return 0;
 }
