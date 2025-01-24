@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
@@ -33,11 +35,25 @@ int main() {
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    printf("Digite do 1 a 3: \n");
+    printf("codigo: %d codigo \n", codigo);
     scanf("%d", &codigo);
+    printf("nome: %s\n", nome);
+    scanf("%s", &nome);
+    printf("populacao %.2f pessoas \n", populacao);
+    scanf("%.2f", &populacao);
+    printf("area: %.2f area \n", area);
+    scanf("%.2f", &area);
+    printf("PIB: %.2f PIB \n", PIB);
+    scanf("%.2f", &PIB);
+    printf("turismo: %d turistas \n", turismo);
+    scanf("%d", &turismo);
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-    printf("Sua cidade é: \n");
-    return 0;
+    printf("Seu codigo é: %d\n", codigo);
+    printf("O nome da cidade é: %s\n", nome);
+    printf("A quantidade de Habitantes é: %.2f\n", populacao);
+    printf("O tamanho da cidade é: %.2f\n", area);
+    printf("O PIB da cidade é: %.2f\n", PIB);
+    printf("A quantidade de turistas é de: %d\n", turismo);
 }
