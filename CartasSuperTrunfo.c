@@ -18,60 +18,77 @@ typedef struct {
 
 int main() {
     // Criei um array de cidades
-    Cidade cidades[3];
+    Cidade cidades[10] = {
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
     // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    //Primeira cidade.
-    cidades[0].codigo = 1;
-    strcpy(cidades[0].nome, "Vitoria");
-    cidades[0].populacao = 250000.0;
-    cidades[0].area = 999.999;
-    cidades[0].PIB = 2342.54;
-    cidades[0].turismo = 500;
-    //Segunda cidade.
-    cidades[1].codigo = 2;
-    strcpy(cidades[1].nome, "Ragathan");
-    cidades[1].populacao = 400000.0;
-    cidades[1].area = 600.256;
-    cidades[1].PIB = 1455.12;
-    cidades[1].turismo = 30;
-    //Terceira cidade.
-    cidades[2].codigo = 3;
-    strcpy(cidades[2].nome, "Varaton");
-    cidades[2].populacao = 900000.0;
-    cidades[2].area = 800.000;
-    cidades[2].PIB = 9800.00;
-    cidades[2].turismo = 600;
+    // Preenchendo os dados das cidades
+    {1, "Vitoria", 1973280, 1295334, 1846783, 768},
+        {2, "Ragathan", 1578498, 1273857, 9189845, 786},
+        {3, "Varaton", 1756286, 7365177, 4851658, 614},
+        {4, "Poramota", 1658436, 9054384, 1897054, 559},
+        {5, "Tomario", 1829768, 7589131, 1985022, 145},
+        {6, "Uratio", 1859325, 1295835, 7182945, 975},
+        {7, "Homario", 9708634, 2938764, 6426789, 768},
+        {8, "Irapole", 7581962, 9852794, 2937489, 598},
+        {9, "Yapotu", 2397567, 5492856, 5432856, 875},
+        {10, "Katora", 2175384, 2153878, 5132857, 328}
+    };
+    int codigoUsuario1, codigoUsuario2;
+    Cidade cidade1, cidade2;
+    int encontrou1 = 0, encontrou2 = 0;
+
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    printf("Digite o código da cidade: ");
-    scanf("%d", &cidades[0].codigo);
-    
-    printf("Digite o nome da cidade: ");
-    scanf("%s", cidades[0].nome);
-    
-    printf("Digite a população: ");
-    scanf("%f", &cidades[0].populacao);
-    
-    printf("Digite a área: ");
-    scanf("%f", &cidades[0].area);
-    
-    printf("Digite o PIB: ");
-    scanf("%lf", &cidades[0].PIB);
-    
-    printf("Digite o número de turistas: ");
-    scanf("%d", &cidades[0].turismo);
+    printf("Digite a primeira cidade (1 a 10): ");
+    scanf("%d", &codigoUsuario1);
+    printf("Digite a segunda cidade (1 a 10): ");
+    scanf("%d", &codigoUsuario2);
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-    printf("\nInformações da Cidade:\n");
-    printf("Código: %d\n", cidades[0].codigo);
-    printf("Nome: %s\n", cidades[0].nome);
-    printf("População: %.2f\n", cidades[0].populacao);
-    printf("Área: %.2f\n", cidades[0].area);
-    printf("PIB: %.2f\n", cidades[0].PIB);
-    printf("Turismo: %d\n", cidades[0].turismo);
+    // Buscar as cidades pelo código
+    for (int i = 0; i < 10; i++) {
+        if (cidades[i].codigo == codigoUsuario1) {
+            cidade1 = cidades[i];
+            encontrou1 = 1;
+        }
+        else if (cidades[i].codigo == codigoUsuario2) {
+            cidade2 = cidades[i];
+            encontrou2 = 1;
+        }
+    }
+
+    // Se não encontrar as duas cidades, exibe erro
+    if (!encontrou1 || !encontrou2) {
+        printf("Código de cidade inválido!\n");
+        return 1;
+    }
+
+    // Exibir informações das cidades
+    printf("\nInformações da Cidade 1: %s\n", cidade1.nome);
+    printf("População: %.2f\nÁrea: %.2f\nPIB: %.2f\nTurismo: %d\n", 
+           cidade1.populacao, cidade1.area, cidade1.PIB, cidade1.turismo);
+
+    printf("\nInformações da Cidade 2: %s\n", cidade2.nome);
+    printf("População: %.2f\nÁrea: %.2f\nPIB: %.2f\nTurismo: %d\n", 
+           cidade2.populacao, cidade2.area, cidade2.PIB, cidade2.turismo);
+
+    // Calcular pontuação de cada cidade
+    double pontosCidade1 = cidade1.populacao + cidade1.area + cidade1.PIB + cidade1.turismo;
+    double pontosCidade2 = cidade2.populacao + cidade2.area + cidade2.PIB + cidade2.turismo;
+
+    printf("\nPontuação da Cidade 1 (%s): %.2f", cidade1.nome, pontosCidade1);
+    printf("\nPontuação da Cidade 2 (%s): %.2f\n", cidade2.nome, pontosCidade2);
+
+    // Comparação e exibição da vencedora
+    if (pontosCidade1 > pontosCidade2) {
+        printf("\nVencedora: %s\n", cidade1.nome);
+    } else if (pontosCidade2 > pontosCidade1) {
+        printf("\nVencedora: %s\n", cidade2.nome);
+    } else {
+        printf("\nEmpate entre %s e %s!\n", cidade1.nome, cidade2.nome);
+    }
 
     return 0;
 }
